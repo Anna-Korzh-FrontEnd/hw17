@@ -1,5 +1,11 @@
 
      .error{
         border-color: red;
-        };
+        }
     
+       
+    .text-check{
+        text-decoration: line-through;
+    }
+       
+      

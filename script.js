@@ -28,9 +28,24 @@
     };
 
   inputItem.innerText = inputText;
+  const check = document.createElement("input");
+  check.type = "checkbox";
+  inputItem.prepend(check);
+
+
+  const disabled = function(event){
+    event.target.disabled = true
+    let li = event.target.closest('.itemLi');
+    li.classList.add('text-check');
+    li.getElementsByClassName('btn-Delete')[0].disabled = true;
+
+    }
+
+check.onchange = disabled;
+
   listInput.append(inputItem);
   input.value = "";
-  
+
   const button = document.createElement("Button");
   button.classList.add("btn-Delete");
   button.innerText = "Delete";
@@ -45,6 +60,4 @@
           }
   });
 }
-
- 
 
