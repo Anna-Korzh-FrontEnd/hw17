@@ -32,7 +32,7 @@ form.onsubmit = function() {
   button.classList.add("btnDelete");
   button.innerText = "Delete";
   inputItem.addEventListener("click", (event) =>{
-    removeButton(event);
+    deleteItem(event);
   });
   inputItem.append(button);
 }
@@ -62,7 +62,7 @@ const setDisabled = function(event){
   li.getElementsByClassName('btnDelete')[0].disabled = true;
 
 }
-const removeButton = function(event){
+const deleteItem = function(event){
   const item = event.target.closest(".itemLi");
   item.remove();
 }
