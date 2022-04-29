@@ -1,6 +1,3 @@
-"use strict";
-
-//1:
 const input = document.getElementById("text")
 const listInput = document.getElementById("list")
 const btn = document.getElementById("submit")
@@ -32,42 +29,42 @@ form.onsubmit = function() {
   input.value = "";
 
   const button = document.createElement("Button");
-  button.classList.add("btnDelete");
+  button.classList.add("btn-delete");
   button.innerText = "Delete";
-  list.addEventListener("click", (event) =>{
-    if(event.target != button) return;
-    deleteItem(event);
-  });
+
   listItem.append(button);
 }
 
+list.addEventListener("click", (event) =>{
+  if(event.target.className === 'btn-delete') deleteItem(event);
+});
 
 const addTodo = function(inputText) {
   const listItem = document.createElement("li");
-  listItem.classList.add("itemValue");
+  listItem.classList.add("item-value");
 
 
   listItem.innerText = inputText;
   const check = document.createElement("input");
   check.type = "checkbox";
-  list.addEventListener("change", (event) =>{
-    if(event.target != check) return;
-    setDisabled(event);
-  });
 
   listItem.prepend(check);
 
   return listItem;
 }
 
+list.addEventListener("change", (event) =>{
+  if(event.target.type === 'checkbox') setDisabled(event);
+});
+
 const setDisabled = function(event){
   event.target.disabled = true
-  let li = event.target.closest('.itemValue');
+  let li = event.target.closest('.item-value');
   li.classList.add('text-check');
-  li.getElementsByClassName('btnDelete')[0].disabled = true;
+  li.getElementsByClassName('btn-delete')[0].disabled = true;
 
 }
 const deleteItem = function(event){
-  const item = event.target.closest(".itemValue");
+  const item = event.target.closest(".item-value");
   item.remove();
 }
